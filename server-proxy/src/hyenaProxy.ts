@@ -8,6 +8,7 @@ import * as bodyParser from 'koa-bodyparser';
 import * as cors from "@koa/cors";
 
 import { ConfigLoader } from './utils/configLoader';
+import { api } from './router';
 
 const app = new Koa();
 
@@ -24,9 +25,9 @@ if (config) {
   app.use(bodyParser());
   app.use(serve(resolve(__dirname, "./statics")));
 
-  // router.use('/api', api.routes(), api.allowedMethods())
-  // app.use(router.routes())
-  // .use(router.allowedMethods());
+  router.use('/api', api.routes(), api.allowedMethods())
+  app.use(router.routes())
+    .use(router.allowedMethods());
 
   // listen
   app.listen(port, () => {

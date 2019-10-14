@@ -64,6 +64,7 @@ typings/
 package-*.json
 *.lock
 src/configs/**
+dist/**
 
 
 !*.example.*
