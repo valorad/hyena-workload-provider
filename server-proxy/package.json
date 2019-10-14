@@ -1,8 +1,8 @@
 {
-  "name": "hyena-workload-provider",
+  "name": "hyena-workload-provider-proxy",
   "version": "1.0.0",
-  "description": "Assignment 1 for course Programming on Cloud",
-  "main": "hyenaWP.js",
+  "description": "Proxy server of Hyena workload provider",
+  "main": "hyenaProxy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

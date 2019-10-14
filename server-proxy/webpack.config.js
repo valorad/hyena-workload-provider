@@ -12,7 +12,7 @@ let config = {
   mode: "production",
 
   entry: {
-    'hyenaWP': resolve("./src/", "hyenaWP")
+    'hyenaProxy': resolve("./src/", "hyenaProxy")
   },
 
   resolve: {

@@ -11,7 +11,7 @@ import { ConfigLoader } from './utils/configLoader';
 
 const app = new Koa();
 
-let config = new ConfigLoader("hyenaWP.json").config();
+let config = new ConfigLoader("hyenaProxy.json").config();
 
 // handling config
 if (config) {
