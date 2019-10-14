@@ -1,0 +1,43 @@
+{
+  "name": "hyena-workload-provider",
+  "version": "1.0.0",
+  "description": "Assignment 1 for course Programming on Cloud",
+  "main": "hyenaWP.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valorad/hyena-workload-provider.git"
+  },
+  "author": "valorad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valorad/hyena-workload-provider/issues"
+  },
+  "homepage": "https://github.com/valorad/hyena-workload-provider#readme",
+  "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "koa": "^2.10.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.50",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.0.42",
+    "@types/koa-static": "^4.0.1",
+    "@types/node": "^12.7.12",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "cross-env": "^6.0.3",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
