@@ -63,9 +63,8 @@ typings/
 # Site specific
 package-*.json
 *.lock
-src/configs/**
-src/statics/**
 dist/**
+src/statics/**
 
 !*.example.*
 !*.gitkeep

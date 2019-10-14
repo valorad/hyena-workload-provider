@@ -1,0 +1,35 @@
+{
+  "name": "hyena-workload-provider-grpc",
+  "version": "1.0.0",
+  "description": "gRPC server of Hyena workload provider",
+  "main": "hyenaGRPC.js",
+  "scripts": {
+    "start": "node dist/hyenaGRPC",
+    "build": "cross-env NODE_ENV=production webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valorad/hyena-workload-provider.git"
+  },
+  "author": "valorad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valorad/hyena-workload-provider/issues"
+  },
+  "homepage": "https://github.com/valorad/hyena-workload-provider#readme",
+  "dependencies": {
+    "grpc": "^1.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.12",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "cross-env": "^6.0.3",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
