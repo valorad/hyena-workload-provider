@@ -11,7 +11,7 @@ const workloadDef = protoLoader.loadSync(resolve(__dirname, "models/workload.pro
 //     so I can only ask Webpack to copy files to models folder instead.
 
 const workloadProto: any = loadPackageDefinition(workloadDef).workload;
-// <-- by of type any I mean GrpcObject<IWorkload> which is unfortunately not supported
+// <-- by of type any I mean GrpcObject<IWorkloadProto> which is unfortunately not supported
 //    This is a hack because GrpcObject does not support Gereric Types
 //    and I don't know how otherwise to let TypeScript understand.
 

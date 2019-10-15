@@ -65,6 +65,7 @@ package-*.json
 *.lock
 dist/**
 src/statics/**
+!src/statics/*hyena*
 
 !*.example.*
 !*.gitkeep

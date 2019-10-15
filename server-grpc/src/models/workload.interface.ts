@@ -8,6 +8,7 @@ interface IListOptions {
 }
 
 interface IWorkload {
+  [index: string] : number,
   CPUUtilization_Average: number,
   NetworkIn_Average: number,
   NetworkOut_Average: number,
