@@ -44,6 +44,13 @@ let config = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       { 
+        from: resolve("./src", "models"),
+        to: 'models',
+        ignore: [
+          ".gitkeep"
+        ]
+      },
+      { 
         from: resolve("./src", "statics"),
         to: 'statics',
         ignore: [
