@@ -43,7 +43,7 @@ export class DataHelper {
         if (this._options.hasHeader) {
           this.headers.push(line1[i]);
         } else {
-          this.headers.push(`column${i}`);
+          this.headers.push(`column${ i + 1 }`);
         }
       }
 
