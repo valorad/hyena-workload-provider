@@ -20,7 +20,7 @@ const workloadProto: any = loadPackageDefinition(workloadDef).workload;
 const gServer = new Server();
 
 const resolvers = {
-  list: (ctx: any, callback: any) => {
+  list: async (ctx: any, callback: any) => {
 
     let listOptions: IWorkloadProto["ListOptions"] = ctx.request;
 
@@ -29,16 +29,24 @@ const resolvers = {
     if (listOptions.unitSize) {dhOptions.unitSize = listOptions.unitSize }
     
     const dataHelper = new DataHelper(dhOptions);
-    dataHelper.help(listOptions.category);
-
+    await dataHelper.help(listOptions.category);
+    
     let startBatchID = listOptions.batchID || 0;
-    let batchSize = listOptions.batchSize || dataHelper.dataBatched.length;
+    let batchSize = listOptions.batchSize || dataHelper.data.length;
     let batches = dataHelper.selectBatch(startBatchID, batchSize);
+
+    // create gRPC recognizable response
+    let workloadBatches = [];
+    for (let listChunk of batches) {
+      workloadBatches.push({
+        workloads: listChunk
+      })
+    }
 
     let response: IWorkloadProto["WorkloadResponse"] = {
       rfwID: listOptions.rfwID || uuid(), // generate a rfw id if not provided
       lastBatchID: startBatchID + batchSize - 1,
-      workloadBatches: batches
+      workloadBatches: workloadBatches
     }
    
     callback(null, response); // <-- you ALWAYS have to return an object

@@ -8,18 +8,22 @@ interface IListOptions {
 }
 
 interface IWorkload {
-  [index: string] : number | undefined,
+  [index: string] : Long | number | undefined,
   CPUUtilization_Average?: number,
-  NetworkIn_Average?: number,
-  NetworkOut_Average?: number,
+  NetworkIn_Average?: Long,
+  NetworkOut_Average?: Long,
   MemoryUtilization_Average?: number,
   Final_Target?: number,
+}
+
+interface IWorkloadList {
+  workloads: IWorkload[],
 }
 
 interface IWorkloadResponse {
   rfwID: string,
   lastBatchID: number,
-  workloadBatches: IWorkload[][]
+  workloadBatches: IWorkloadList[]
 }
 
 interface IWorkloadService {

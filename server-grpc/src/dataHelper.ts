@@ -134,9 +134,7 @@ export class DataHelper {
     if (this._options.fields.length > 0) {
       this.extractData();
     }
-
     this.splitData();
-
   };
 
   selectBatch = (startPos: number, batchSize: number) => {
