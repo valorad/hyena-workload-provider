@@ -6,23 +6,34 @@ import { IWorkloadProto } from "./models/workload.interface";
 
 const readFileAsync = promisify(readFile);
 
+interface DataHelperOptions {
+  hasHeader?: boolean,
+  fields?: string[],
+  unitSize?: number,
+}
+
+
 export class DataHelper {
 
   private _options = {
-    hasHeader: true
+    hasHeader: true,
+    fields: [],
+    unitSize: 100
   };
 
   headers: string[] = [];
 
-  data: IWorkloadProto["WorkloadList"] = [];
-  /**
-   *
-   */
-  constructor(options?: any) {
-    if (options) {
-      this._options = options;
-    }
+  private _data: IWorkloadProto["WorkloadList"] = [];
+
+  get data() {
+    return this._data;
   }
+
+  set data(newData) {
+    this._data = newData;
+  }
+
+  dataBatched: IWorkloadProto["WorkloadList"][] = [];
 
   toJSON = (rowData: number[]) => {
     let json = {} as IWorkloadProto["Workload"];
@@ -99,15 +110,51 @@ export class DataHelper {
     return file;
   };
 
-  extractData = () => {};
+  extractData = () => {
+    this.data = this.data.map((workload) => {
+      let extractedData = { } as IWorkloadProto["Workload"];
+      for (let field of this._options.fields) {
+        extractedData[field] = workload[field];
+      }
+      return extractedData;
+    });
+  };
 
-  splitData = () => {};
+  splitData = () => {
+    let i = 0;
+    while (i < this.data.length) {
+      this.dataBatched.push(this.data.slice(i, i += this._options.unitSize));
+    }
+  };
 
   help = async (category: string) => {
     let content = await this.loadData(`${category}.csv`);
     let rawData = await this.parseCSV(content);
     this.formData(rawData);
-    return this.data;
+    if (this._options.fields.length > 0) {
+      this.extractData();
+    }
+
+    this.splitData();
+
   };
+
+  selectBatch = (startPos: number, batchSize: number) => {
+    return this.dataBatched.slice(startPos, batchSize);
+  };
+
+  /**
+   *
+   */
+  constructor(options?: DataHelperOptions) {
+    if (options) {
+      this._options = {
+        ...this._options,
+        ...options
+      } as any;
+    }
+  }
+
+
 
 }

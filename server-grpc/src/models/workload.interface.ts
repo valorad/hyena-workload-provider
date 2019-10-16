@@ -8,12 +8,12 @@ interface IListOptions {
 }
 
 interface IWorkload {
-  [index: string] : number,
-  CPUUtilization_Average: number,
-  NetworkIn_Average: number,
-  NetworkOut_Average: number,
-  MemoryUtilization_Average: number,
-  Final_Target: number,
+  [index: string] : number | undefined,
+  CPUUtilization_Average?: number,
+  NetworkIn_Average?: number,
+  NetworkOut_Average?: number,
+  MemoryUtilization_Average?: number,
+  Final_Target?: number,
 }
 
 interface IWorkloadService {
