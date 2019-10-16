@@ -1,5 +1,8 @@
 import * as Router from 'koa-router';
 
+// sub routes
+import { workload } from "./workload";
+
 class API {
   static routerInstance = new Router();
 
@@ -15,6 +18,7 @@ class API {
 
     // sub routes
 
+    this.routerInstance.use('/workloads', workload.routes(), workload.allowedMethods());
     return this.routerInstance;
 
   }

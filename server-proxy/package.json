@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/valorad/hyena-workload-provider#readme",
   "dependencies": {
+    "@grpc/grpc-js": "^0.6.9",
+    "@grpc/proto-loader": "^0.5.2",
     "@koa/cors": "^3.0.0",
     "koa": "^2.10.0",
     "koa-bodyparser": "^4.2.1",

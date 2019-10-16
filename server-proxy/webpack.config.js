@@ -56,6 +56,13 @@ let config = {
         ignore: [
           ".gitkeep"
         ]
+      },
+      { 
+        from: `src/**/*.proto`,
+        to: 'models/',
+        ignore: [
+          ".gitkeep"
+        ]
       }
     ]),
 
