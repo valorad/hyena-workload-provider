@@ -22,6 +22,12 @@ message WorkloadList {
   repeated Workload workloads = 1;
 }
 
+message WorkloadResponse {
+  string rfwID = 1;
+  int32 lastBatchID = 2;
+  repeated WorkloadList workloadBatches = 3;
+}
+
 service WorkloadService {
-  rpc List(ListOptions) returns (WorkloadList) {}
+  rpc List(ListOptions) returns (WorkloadResponse) {}
 }

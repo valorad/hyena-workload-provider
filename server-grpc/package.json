@@ -21,11 +21,13 @@
   "dependencies": {
     "@grpc/grpc-js": "^0.6.9",
     "@grpc/proto-loader": "^0.5.2",
-    "csv-parse": "^4.6.3"
+    "csv-parse": "^4.6.3",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "@types/node": "^12.7.12",
+    "@types/uuid": "^3.4.5",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
     "cross-env": "^6.0.3",

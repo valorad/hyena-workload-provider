@@ -16,13 +16,20 @@ interface IWorkload {
   Final_Target?: number,
 }
 
+interface IWorkloadResponse {
+  rfwID: string,
+  lastBatchID: number,
+  workloadBatches: IWorkload[][]
+}
+
 interface IWorkloadService {
-  List: (options: IListOptions) => IWorkload[]
+  List: (options: IListOptions) => IWorkloadResponse
 }
 
 export interface IWorkloadProto {
   ListOptions: IListOptions,
   Workload: IWorkload,
   WorkloadList: IWorkload[],
+  WorkloadResponse: IWorkloadResponse,
   WorkloadService: IWorkloadService,
 }

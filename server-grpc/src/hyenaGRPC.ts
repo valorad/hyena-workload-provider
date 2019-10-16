@@ -3,8 +3,10 @@ import { resolve } from "path";
 
 import { Server, ServerCredentials, loadPackageDefinition } from "@grpc/grpc-js";
 import * as protoLoader from "@grpc/proto-loader";
+import * as uuid from "uuid/v4";
 
 import { IWorkloadProto } from "./models/workload.interface";
+import { DataHelper } from "./dataHelper";
 
 const workloadDef = protoLoader.loadSync(resolve(__dirname, "models/workload.proto"));
 // <-- no way found to let protoLoader read file content directly,  
@@ -20,14 +22,26 @@ const gServer = new Server();
 const resolvers = {
   list: (ctx: any, callback: any) => {
 
-    let data: IWorkloadProto["Workload"][] = [];
     let listOptions: IWorkloadProto["ListOptions"] = ctx.request;
 
-    console.log(ctx.request);
-
-    // TODO: Helper query data back
+    let dhOptions = {} as any;
+    if (listOptions.fields) {dhOptions.fields = listOptions.fields }
+    if (listOptions.unitSize) {dhOptions.unitSize = listOptions.unitSize }
     
-    callback(null, {data}); // <-- you ALWAYS have to return an object
+    const dataHelper = new DataHelper(dhOptions);
+    dataHelper.help(listOptions.category);
+
+    let startBatchID = listOptions.batchID || 0;
+    let batchSize = listOptions.batchSize || dataHelper.dataBatched.length;
+    let batches = dataHelper.selectBatch(startBatchID, batchSize);
+
+    let response: IWorkloadProto["WorkloadResponse"] = {
+      rfwID: listOptions.rfwID || uuid(), // generate a rfw id if not provided
+      lastBatchID: startBatchID + batchSize - 1,
+      workloadBatches: batches
+    }
+   
+    callback(null, response); // <-- you ALWAYS have to return an object
   }
 }
 
