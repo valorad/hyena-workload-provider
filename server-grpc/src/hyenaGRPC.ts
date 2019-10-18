@@ -7,6 +7,7 @@ import * as uuid from "uuid/v4";
 
 import { IWorkloadProto } from "./models/workload.interface";
 import { DataHelper } from "./dataHelper";
+import { ConfigLoader } from "./utils/configLoader";
 
 const workloadDef = protoLoader.loadSync(resolve(__dirname, "models/workload.proto"));
 // <-- no way found to let protoLoader read file content directly,  
@@ -55,10 +56,10 @@ const resolvers = {
 
 gServer.addService(workloadProto.WorkloadService.service, resolvers);
 
-const host = "localhost:50051";
+const config = new ConfigLoader("hyenaGRPC.json").config().gRPC;
 
-gServer.bindAsync(host, ServerCredentials.createInsecure(), () => {
-  console.log(`gRPC Server is running at ${host}`);
+gServer.bindAsync(config.host, ServerCredentials.createInsecure(), () => {
+  console.log(`gRPC Server is running at ${config.host}`);
 
   gServer.start()
 });
