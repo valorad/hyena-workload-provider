@@ -13,7 +13,7 @@ export class ConfigLoader {
     try {
       configFile = readFileSync(resolve(this.baseDirectory, `./configs/${this.configFileName}`), { encoding: "utf-8" });
     } catch (error) {
-      console.error(`Error loading config file. Make sure you have created the '${this.configFileName}' under server/configs`);
+      console.error(`Error loading config file. Make sure you have created the '${this.configFileName}' under ./configs`);
       return null;
     }
 
@@ -40,15 +40,8 @@ export class ConfigLoader {
     }
   };
 
-  setBasePath = () => {
-    if (process.env.isTesting === 'yes') {
-      this.baseDirectory = resolve(__dirname, "..");
-    }
-  };
-
   constructor(filename: string) {
     this.configFileName = filename;
-    this.setBasePath();
   }
 
 }
