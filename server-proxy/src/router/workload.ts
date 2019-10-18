@@ -1,6 +1,5 @@
 import * as Router from 'koa-router';
 import { WorkloadAction as Action } from '../actions/workload.action';
-import { Workload } from '../gRPC/workload';
 
 interface proxyQuery {
   [index: string]: string | string[] | number,
@@ -51,23 +50,18 @@ class WorkloadRoute {
         query.fields = queryReq.fields.split(",");
       }
 
-      const resolver = new Workload();
+      const result = await this.action.getBatches(
+        {
+          category: ctx.params.category,
+          ...query
+        }
+      );
 
-      let qResult = await resolver.list({
-        category: ctx.params.category,
-        ...query
-      });
-
-      ctx.body = qResult || {message: `Failed to perform query.` };
-
-      // ctx.body = {};
-      
+      ctx.body = result || {message: `Failed to perform query.` };
 
     });
     
   }
-
-
 
 }
 
