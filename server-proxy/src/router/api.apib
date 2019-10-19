@@ -3,16 +3,75 @@ HOST: http://localhost:3000/
 
 # hyena-workload-provider:proxy
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Proxy server of Hyena workload provider
+
+# Group Workload
+
+The related actions of workload
 
 ## Category Route [/api/workload/category/{category}{?query}]
 
 ### Get workload batches by category [GET]
 
++ Parameters
+    + query (optional, string)
+
+        interface proxyQuery {
+            rfwID?: string,
+            fields?: string[],
+            unitSize?: number,
+            batchID?: number,
+            batchSize?: number
+        }
+
+        rfwID:      The request for workload ID. Auto-generated if not provided.
+        fields:     Query field filters. Returns all fields if not provided.
+                    Valid fields are: "rfwID", "fields", "unitSize", "batchID", "batchSize"
+        unitSize:   The partition size of ezch batch. Defaults to 100
+        batchID:    The first batchID starting to return. Defaults to 0
+        batchSize:  The number of batches in total to return. Defaults to size of the entire batch.
+
 + Response 200 (application/json)
 
-        [
+        {
+          "rfwID": "3d3c625c-10e1-4015-9d42-2534e0373a7c",
+          "lastBatchID": 1,
+          "workloadBatches": [
             {
-                "message": "Fxck you Apiary!!!"
+              "workloads": [
+                {
+                  "CPUUtilization_Average": 47,
+                  "NetworkIn_Average": 237680598,
+                  "NetworkOut_Average": 239043377,
+                  "MemoryUtilization_Average": 52.913150787353516,
+                  "Final_Target": 47.77583694458008
+                },
+                {
+                  "CPUUtilization_Average": 46,
+                  "NetworkIn_Average": 259965162,
+                  "NetworkOut_Average": 258764450,
+                  "MemoryUtilization_Average": 52.7884407043457,
+                  "Final_Target": 47.15174102783203
+                }
+              ]
+            },
+            {
+              "workloads": [
+                {
+                  "CPUUtilization_Average": 42,
+                  "NetworkIn_Average": 233246999,
+                  "NetworkOut_Average": 218742552,
+                  "MemoryUtilization_Average": 46.6890983581543,
+                  "Final_Target": 42.35888671875
+                },
+                {
+                  "CPUUtilization_Average": 33,
+                  "NetworkIn_Average": 194803090,
+                  "NetworkOut_Average": 185055560,
+                  "MemoryUtilization_Average": 41.72902297973633,
+                  "Final_Target": 35.66691589355469
+                }
+              ]
             }
-        ]
+          ]
+        }
