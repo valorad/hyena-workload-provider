@@ -1,0 +1,18 @@
+FROM node:alpine
+LABEL maintainer="Valroad <valorad@outlook.com>"
+
+ADD ./dist /www/hyenaProxy/
+ADD ./package.dist.json /www/hyenaProxy/package.json
+
+WORKDIR /www/hyenaProxy
+
+RUN echo " --- Collecting node modules --- " \
+ # node module collection
+ && npm install \
+ && npm cache clean --force
+
+VOLUME ["/www/hyenaProxy/configs"]
+
+EXPOSE 3000
+
+CMD npm run start && /bin/sh

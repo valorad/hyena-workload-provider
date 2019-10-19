@@ -1,0 +1,21 @@
+{
+  "name": "hyena-workload-provider-proxy",
+  "version": "1.0.0",
+  "description": "Proxy server of Hyena workload provider",
+  "main": "hyenaProxy.js",
+  "scripts": {
+    "start": "node dist/hyenaProxy"
+  },
+   "author": "valorad",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/grpc-js": "^0.6.9",
+    "@grpc/proto-loader": "^0.5.2",
+    "@koa/cors": "^3.0.0",
+    "koa": "^2.10.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0"
+  }
+}

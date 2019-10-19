@@ -1,0 +1,17 @@
+{
+  "name": "hyena-workload-provider-grpc",
+  "version": "1.0.0",
+  "description": "gRPC server of Hyena workload provider",
+  "main": "hyenaGRPC.js",
+  "scripts": {
+    "start": "node dist/hyenaGRPC"
+  },
+  "author": "valorad",
+  "license": "MIT",
+  "dependencies": {
+    "@grpc/grpc-js": "^0.6.9",
+    "@grpc/proto-loader": "^0.5.2",
+    "csv-parse": "^4.6.3",
+    "uuid": "^3.3.3"
+  }
+}

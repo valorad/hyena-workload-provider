@@ -1,0 +1,18 @@
+FROM node:alpine
+LABEL maintainer="Valroad <valorad@outlook.com>"
+
+ADD ./dist /www/hyenaGRPC/
+ADD ./package.dist.json /www/hyenaGRPC/package.json
+
+WORKDIR /www/hyenaGRPC
+
+RUN echo " --- Collecting node modules --- " \
+ # node module collection
+ && npm install \
+ && npm cache clean --force
+
+VOLUME ["/www/hyenaGRPC/configs",  "/www/hyenaGRPC/statics"]
+
+EXPOSE 3000
+
+CMD npm run start && /bin/sh
