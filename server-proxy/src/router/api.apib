@@ -9,11 +9,14 @@ Proxy server of Hyena workload provider
 
 The related actions of workload
 
-## Category Route [/api/workload/category/{category}{?query}]
+## Category Route [/api/workloads/category/{category}{?query}]
 
 ### Get workload batches by category [GET]
 
 + Parameters
+    + category (required, string)
+        The category of the csv data. i.e. The filename without extension.
+
     + query (optional, string)
 
         interface proxyQuery {
