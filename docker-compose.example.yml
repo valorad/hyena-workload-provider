@@ -5,9 +5,10 @@ version: "3"
 services:
 
   gRPC: 
-    image: valorad/hyena-gRPC
-    container_name: hyena-gRPC
-    expose: 3000
+    image: valorad/hyena-grpc
+    container_name: hyena-grpc
+    expose:
+      - 50051
     volumes:
       - "/path/2/gRPC/configs:/www/hyenaGRPC/configs"
       - "/path/2/gRPC/statics:/www/hyenaGRPC/statics"
@@ -18,7 +19,8 @@ services:
   proxy: 
     image: valorad/hyena-proxy
     container_name: hyena-proxy
-    expose: 50051
+    expose:
+      - 3000
     volumes:
       - "/path/2/proxy/configs:/www/hyenaProxy/configs"
     networks:

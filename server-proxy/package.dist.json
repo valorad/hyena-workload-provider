@@ -4,7 +4,7 @@
   "description": "Proxy server of Hyena workload provider",
   "main": "hyenaProxy.js",
   "scripts": {
-    "start": "node dist/hyenaProxy"
+    "start": "node hyenaProxy"
   },
    "author": "valorad",
   "license": "MIT",
