@@ -2,7 +2,7 @@
 Assignment 1 for course Programming on Cloud
 
 ## Proxy Server API doc
-Checkout the latest Api document of the proxy server on [Apiary](https://app.apiary.io/hyenaproxy).
+Checkout the latest Api document of the proxy server on [Apiary](https://hyenaproxy.docs.apiary.io).
 
 ## Docker Deployment
 - Create your own version of `docker-compose.yml` following the example compose config.

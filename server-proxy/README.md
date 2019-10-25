@@ -3,7 +3,7 @@ Proxy server of Hyena workload provider
 
 ## API doc
 
-Checkout the latest Api document on [Apiary](https://hyenaproxy.apiary.io).
+Checkout the latest Api document on [Apiary](https://hyenaproxy.docs.apiary.io).
 
 ## Docker Deployment
 
