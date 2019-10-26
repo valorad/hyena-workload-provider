@@ -138,7 +138,7 @@ export class DataHelper {
   };
 
   selectBatch = (startPos: number, batchSize: number) => {
-    return this.dataBatched.slice(startPos, batchSize);
+    return this.dataBatched.slice(startPos, batchSize + startPos);
   };
 
   /**
