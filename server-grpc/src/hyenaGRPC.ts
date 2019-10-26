@@ -46,7 +46,7 @@ const resolvers = {
 
     let response: IWorkloadProto["WorkloadResponse"] = {
       rfwID: listOptions.rfwID || uuid(), // generate a rfw id if not provided
-      lastBatchID: startBatchID + batchSize - 1,
+      lastBatchID: startBatchID + batchSize - 2,
       workloadBatches: workloadBatches
     }
    
